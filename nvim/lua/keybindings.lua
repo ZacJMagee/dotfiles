@@ -1,7 +1,6 @@
 -- Require the necessary Telescope modules
 local builtin = require('telescope.builtin')
 local actions = require("telescope.actions")
-local neogit = require("neogit")
 
 -- Move selected lines down in visual mode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { silent = true, desc = "Move selected lines down" })
@@ -197,10 +196,6 @@ vim.keymap.set("n", "<leader>on", ":ObsidianTemplate Note Template<cr> :lua vim.
 -- Suda write keybinding
 vim.keymap.set("n", "<leader>W", ":SudaWrite<CR>", { silent = true, desc = "Write with sudo privileges" })
 
--- Neogit keybinding
-vim.keymap.set("n", "<leader>ng", function()
-    neogit.open({ kind = "floating" })
-end, { silent = true, desc = "Open Neogit status" })
 
 -- Telescope Keybindings
 vim.keymap.set('n', '<leader>ff', ":Telescope find_files<CR>", { silent = true, desc = "Find files" })

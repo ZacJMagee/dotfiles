@@ -145,15 +145,6 @@ require('lazy').setup({
             })
         end,
     },
-    -- {
-    --     "rcarriga/nvim-notify",
-    --     event = "VeryLazy",
-    --     config = function()
-    --         require("notify").setup({
-    --             background_colour = "#000000"
-    --         })
-    --     end
-    -- },
     {
         "folke/noice.nvim",
         event = "VeryLazy",
@@ -170,18 +161,6 @@ require('lazy').setup({
     },
     {
         "christoomey/vim-tmux-navigator", event = "VeryLazy"
-    },
-    {
-        "NeogitOrg/neogit",
-        cmd = "Neogit",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "sindrets/diffview.nvim",
-            "nvim-telescope/telescope.nvim",
-        },
-        config = function()
-            require("plugins.neogit")
-        end,
     },
     {
         "nvim-tree/nvim-web-devicons", lazy = true
@@ -320,14 +299,19 @@ require('lazy').setup({
             },
         },
         config = function(_, opts)
-            -- Setup Oil with the provided options
             require("oil").setup(opts)
-
-            -- Keybinding for opening Oil with <leader>tt
             vim.keymap.set("n", "<leader>tt", require("oil").open, { desc = "Open Oil file browser" })
         end,
         dependencies = { { "echasnovski/mini.icons", opts = {} } },
     },
+    {
+        "folke/snacks.nvim",
+        priority = 1000,
+        lazy = false,
+        config = function()
+            require("plugins.snacks").setup()
+        end,
+    }
 
 })
 -- Set conceallevel for Markdown files

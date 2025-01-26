@@ -375,7 +375,7 @@ M.setup = function()
     lspconfig.sqlls.setup(default_config)
 
     -- Configure TypeScript/JavaScript LSP with enhanced settings for Next.js
-    lspconfig.tsserver.setup(vim.tbl_deep_extend("force", default_config, {
+    lspconfig.ts_ls.setup(vim.tbl_deep_extend("force", default_config, {
         init_options = {
             preferences = {
                 disableSuggestions = true,

@@ -63,6 +63,13 @@ function M.setup()
         }),
         formatting = {
             format = function(entry, vim_item)
+                if entry.completion_item.documentation then
+                    if cmp.visible_docs() then
+                        vim_item.menu = "󰈙 " .. (vim_item.menu or "")
+                    else
+                        vim_item.menu = "󰆈 " .. (vim_item.menu or "")
+                    end
+                end
                 vim_item.menu = ({
                     nvim_lsp = "[LSP]",
                     luasnip = "[Snip]",
@@ -80,15 +87,15 @@ function M.setup()
     -- `/` cmdline setup
     cmp.setup.cmdline('/', {
         mapping = cmp.mapping.preset.cmdline(),
-        sources = {{ name = 'buffer' }}
+        sources = { { name = 'buffer' } }
     })
 
     -- `:` cmdline setup
     cmp.setup.cmdline(':', {
         mapping = cmp.mapping.preset.cmdline(),
         sources = cmp.config.sources(
-            {{ name = 'path' }},
-            {{ name = 'cmdline', option = { ignore_cmds = { 'Man', '!' }}}}
+            { { name = 'path' } },
+            { { name = 'cmdline', option = { ignore_cmds = { 'Man', '!' } } } }
         )
     })
 end

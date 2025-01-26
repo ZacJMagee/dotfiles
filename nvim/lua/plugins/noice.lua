@@ -45,10 +45,10 @@ return require("noice").setup({
       view = nil,
       opts = {},
     },
-    message = {
-      enabled = true,
-      view = "notify",
-      opts = {},
-    },
+    -- message = {
+    --   enabled = true,
+    --   view = "notify",
+    --   opts = {},
+    -- },
   },
 })
